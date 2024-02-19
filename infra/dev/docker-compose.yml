@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: "${INFRA}-frontend"
+    build:
+      context: ../../
+      dockerfile: infra/dev/Dockerfile
+      args:
+        - VITE_API_URL=${VITE_API_URL}
+        - VITE_URL=${VITE_URL}
+    volumes:
+      - ../..:/app
+    ports:
+      - 8080:5173
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    env_file:
+      - .env
+    restart: unless-stopped
