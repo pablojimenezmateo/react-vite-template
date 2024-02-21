@@ -5,7 +5,7 @@ const useResetApp = () => {
   const queryCache = queryClient.getQueryCache();
   const queryKeys = queryCache.getAll().map((cache) => cache.queryKey);
 
-  const reset = () => {
+  const resetApp = () => {
     // Save sessionError so that it survives the reset
     // it is used to show a message to the user in the login page
     const sessionError = localStorage.getItem("sessionError");
@@ -24,7 +24,7 @@ const useResetApp = () => {
     });
   };
 
-  return reset;
+  return resetApp;
 };
 
 export default useResetApp;
